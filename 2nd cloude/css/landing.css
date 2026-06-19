@@ -126,6 +126,46 @@
 .rank-item { display: flex; align-items: center; gap: 12px; font-size: 0.9rem; color: var(--muted); }
 .badges-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; }
 
+/* ── PRICING SECTION ──────────────────────────────────── */
+.pricing-section { padding: 80px 24px; background: var(--surface); border-top: 1px solid var(--border); }
+.pricing-inner { max-width: 1100px; margin: 0 auto; }
+.pricing-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; align-items: stretch;
+}
+.pricing-card {
+  display: flex; flex-direction: column;
+  background: var(--bg); border: 1px solid var(--border); border-radius: var(--r-xl);
+  padding: 28px 24px; transition: all 0.2s;
+}
+.pricing-card:hover { border-color: var(--borderL); transform: translateY(-3px); }
+.pricing-card.featured {
+  border-color: var(--primary);
+  background: linear-gradient(135deg, var(--bg), rgba(79,142,247,0.07));
+  box-shadow: 0 0 0 1px var(--primary), 0 20px 50px rgba(79,142,247,0.16);
+  position: relative;
+}
+.pricing-card.featured::before {
+  content: "MOST POPULAR";
+  position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
+  background: var(--grad-primary); color: #fff;
+  font-size: 0.64rem; font-weight: 800; letter-spacing: 0.08em;
+  padding: 5px 14px; border-radius: var(--r-full); white-space: nowrap;
+}
+.plan-name { font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; margin-bottom: 10px; }
+.plan-price { font-family: var(--font-display); font-size: 2.3rem; font-weight: 800; margin-bottom: 6px; }
+.plan-price span { font-family: var(--font-body); font-size: 0.88rem; font-weight: 500; color: var(--muted); }
+.plan-desc { font-size: 0.85rem; color: var(--muted); line-height: 1.55; min-height: 42px; }
+.plan-divider { height: 1px; background: var(--border); margin: 20px 0; }
+.plan-features { display: flex; flex-direction: column; gap: 13px; flex: 1; margin-bottom: 26px; }
+.plan-feature { display: flex; align-items: center; gap: 10px; font-size: 0.85rem; color: var(--faint); }
+.plan-feature.included { color: var(--text); }
+.pf-check {
+  width: 19px; height: 19px; border-radius: 50%; flex-shrink: 0;
+  display: grid; place-items: center; font-size: 0.7rem; font-weight: 700;
+}
+.pf-check.pf-yes { background: var(--accentDim); color: var(--accent); }
+.pf-check.pf-no  { background: var(--surface2); color: var(--faint); }
+
 /* ── CTA BAND ────────────────────────────────────────── */
 .cta-band {
   background: linear-gradient(135deg,#0d1829,#111a30);
@@ -148,4 +188,6 @@ footer a { color: var(--primary); }
   .step-arrow { display:none; }
   .nav-links { display:none; }
   .mockup-sidebar { display:none; }
+  .pricing-grid { grid-template-columns: 1fr; }
+  .pricing-card.featured { order: -1; }
 }
