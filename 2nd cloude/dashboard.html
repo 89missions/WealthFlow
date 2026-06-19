@@ -12,6 +12,7 @@
 
   <!-- TOPBAR -->
   <header class="topbar">
+    <button class="sidebar-toggle" id="sidebarToggle" onclick="toggleSidebar()">☰</button>
     <a href="index.html" class="topbar-logo">
       <div class="logo-mark">W</div>
       WealthFlow
@@ -35,7 +36,8 @@
   </header>
 
   <!-- SIDEBAR -->
-  <aside class="sidebar">
+  <div class="sidebar-backdrop" id="sidebarBackdrop" onclick="closeSidebar()"></div>
+  <aside class="sidebar" id="sidebarEl">
     <span class="sidebar-section-label">Main</span>
     <div class="nav-item active" data-section="overview"  onclick="switchSection('overview',this)"><span class="icon">📊</span> Overview</div>
     <div class="nav-item" data-section="expenses"  onclick="switchSection('expenses',this)"><span class="icon">⚡</span> Log Expense</div>
@@ -501,5 +503,19 @@
 
 <script src="../js/db.js"></script>
 <script src="../js/dashboard.js"></script>
+<script>
+  function toggleSidebar() {
+    document.getElementById('sidebarEl').classList.toggle('open');
+    document.getElementById('sidebarBackdrop').classList.toggle('open');
+  }
+  function closeSidebar() {
+    document.getElementById('sidebarEl').classList.remove('open');
+    document.getElementById('sidebarBackdrop').classList.remove('open');
+  }
+  // Auto-close the mobile sidebar whenever a nav item is tapped
+  document.querySelectorAll('.nav-item').forEach(function (item) {
+    item.addEventListener('click', closeSidebar);
+  });
+</script>
 </body>
 </html>
